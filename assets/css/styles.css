@@ -21,7 +21,7 @@ background: coral
 }
 .pomodoros {
 
-  width: 65px;
+  width: 55px;
 
 }
 
@@ -29,5 +29,12 @@ background: coral
   background: chocolate;
   width: 200px;
   height: 432px;
+
+}
+
+.urgente{
+
+  color: brown;
+  
 
 }
