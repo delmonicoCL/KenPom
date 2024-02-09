@@ -1,24 +1,33 @@
 .rojo {
-  background: rgba(243, 29, 72, 0.699);
+  /* background: rgba(243, 29, 72, 0.699); */
   height: 100px;
+  border: 1px solid;
+  border-color: brown;
+  
 }
 
 .azul {
-  background:coral
+  background: coral
 }
 
 .verde {
-  background: rgb(39, 43, 39);
+  background: rgb(97, 180, 97);
 }
 
-#contenedorCentral{
+#ToDO {
 
-background: rgba(128, 255, 0, 0.068);
+background: coral
+
+}
+.pomodoros {
+
+  width: 65px;
 
 }
 
-.drop-zone{
-
-background: chocolate;
+.drop-zone {
+  background: chocolate;
+  width: 200px;
+  height: 432px;
 
 }
