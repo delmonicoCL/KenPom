@@ -1,18 +1,18 @@
-.rojo {
-  /* background: rgba(243, 29, 72, 0.699); */
-  height: 100px;
-  border: 1px solid;
-  border-color: brown;
+.panelPomodoro {
+  background: #7AF5E7;
+  border-radius: 15px;
+  height: 170px;
   
 }
 
-.azul {
-  background: coral
+
+.panelInfo{
+background: #7AF5E7;
+  border-radius: 15px;
+  height: 85px;
+
 }
 
-.verde {
-  background: rgb(97, 180, 97);
-}
 
 #ToDO {
 
@@ -21,7 +21,7 @@ background: coral
 }
 .pomodoros {
 
-  width: 55px;
+  width: 75px;
 
 }
 
@@ -32,9 +32,84 @@ background: coral
 
 }
 
+.calendar{
+    width: -webkit-fill-available;
+
+}
+
 .urgente{
 
-  color: brown;
+  color: #F57A88;
   
 
 }
+
+.crearTarea{
+
+  background: #7AC5F5;
+}
+
+.bottonBorrar{
+background: #F57A88;
+
+
+}
+
+
+.estilos_fonts{
+
+  font-family: 'Electrolize', sans-serif;
+    font-family: 'Protest Guerrilla', sans-serif;
+    font-family: 'Sixtyfour', sans-serif;
+    font-family: 'Teko', sans-serif;
+}
+
+
+.timer {
+  text-align: center;
+}
+
+#tiempo-restante {
+/* font-family: 'Sylar Stencil', sans-serif; */
+font-family: 'Tiny BoxBitA10', sans-serif;
+font-family: 'Tiny Box BlackBitA8', sans-serif;
+font-family: 'Tiny Box CollageBitA12', sans-serif;
+  font-size: 100px;
+  color: azure;
+
+}
+
+.info-pantalla{
+  font-family: 'Protest Guerrilla', sans-serif;
+    font-size: 90px;
+    color: azure;
+
+}
+
+.texto-pantalla {
+  font-family: 'Protest Guerrilla';
+  font-size: 55px;
+  color: #F57A88;
+
+}
+
+button {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+
+/* H5{
+
+
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  
+} */
+
+/* body{
+
+  background: #FFE7AD;
+
+} */
