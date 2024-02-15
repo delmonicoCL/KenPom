@@ -5,12 +5,27 @@
   
 }
 
+.panelPomodoro1 {
+  background: #FECCC5;
+  border-radius: 15px;
+  height: 170px;
+  
+}
+
+
 
 .panelInfo{
-background: #7AF5E7;
+background: #FFD871;
   border-radius: 15px;
   height: 85px;
 
+}
+
+.panelInfo1{
+
+  background: #7AF5E7;
+  border-radius: 15px;
+  height: 85px;
 }
 
 
@@ -37,6 +52,12 @@ background: coral
 
 }
 
+.tomatin{
+  width: auto;
+  height: 160px;
+
+}
+
 .urgente{
 
   color: #F57A88;
@@ -56,13 +77,6 @@ background: #F57A88;
 }
 
 
-.estilos_fonts{
-
-  font-family: 'Electrolize', sans-serif;
-    font-family: 'Protest Guerrilla', sans-serif;
-    font-family: 'Sixtyfour', sans-serif;
-    font-family: 'Teko', sans-serif;
-}
 
 
 .timer {
@@ -70,24 +84,22 @@ background: #F57A88;
 }
 
 #tiempo-restante {
-/* font-family: 'Sylar Stencil', sans-serif; */
-font-family: 'Tiny BoxBitA10', sans-serif;
-font-family: 'Tiny Box BlackBitA8', sans-serif;
-font-family: 'Tiny Box CollageBitA12', sans-serif;
-  font-size: 100px;
+  font-family: 'SF Buttacup Lettering Shaded', sans-serif;
+  font-size: 115px;
   color: azure;
 
 }
 
 .info-pantalla{
-  font-family: 'Protest Guerrilla', sans-serif;
+  font-family: 'SF Buttacup Lettering Shaded', sans-serif;
+                                                
     font-size: 90px;
     color: azure;
 
 }
 
 .texto-pantalla {
-  font-family: 'Protest Guerrilla';
+  font-family: 'SF Buttacup Lettering Shaded', sans-serif;
   font-size: 55px;
   color: #F57A88;
 
@@ -99,17 +111,9 @@ button {
 }
 
 
-/* H5{
-
-
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 600;
-    font-style: normal;
+H2{
+  font-family: 'SF Buttacup Lettering Shaded', sans-serif;
+   
   
-} */
+} 
 
-/* body{
-
-  background: #FFE7AD;
-
-} */

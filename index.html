@@ -11,7 +11,11 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/sylar-stencil" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/tiny-box" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/sf-buttacup-lettering-shaded" rel="stylesheet">
     <script src="/assets/js/script_kanban.js"></script>
+    <script src="/assets/js/script_pomodoro.js"></script>
     <title>Kanban Panel</title>
 </head>
 
@@ -21,39 +25,121 @@
             <div class="container">
                 <div class="row">
                     <div class="panelPomodoro mb-2 col-md-4 d-flex justify-content-center align-items-center">
-                        <div id="" class="">
-                            <img class="pomodoros" src="assets/img/pomodoro.png" />
-                        </div>
-                        <div id="" class="">
-                            <img class="pomodoros" src="assets/img/pomodoro.png" />
-                        </div>
-                        <div id="" class="">
-                            <img class="pomodoros" src="assets/img/pomodoro.png" />
-                        </div>
-                        <div id="" class="">
-                            <img class="pomodoros" src="assets/img/pomodoro.png" />
-                        </div>
-                    </div>
-                    <div class="panelPomodoro mb-2 col-md-5 d-flex justify-content-center align-items-center">
-                        <img src="assets/img/reloj_pomodoro.png" alt="" />
+
+                        <div id="cantidadPomodoros" class="pomodoros-container"></div>
+
                     </div>
 
+                    <div class="panelPomodoro mb-2 col-md-5 d-flex justify-content-center align-items-center">
+
+                        <a id="tiempo-restante"></a>
+
+                    </div>
+
+
                     <div class="panelPomodoro mb-2 col-md-3 d-flex justify-content-center align-items-center">
-                        <div id="" class="">
-                            <img class="pomodoros" src="assets/img/play.png" />
+
+                        <div id="zonaPausePlay" class="boton" onclick="iniciarDetener()">
+                            <img class="pomodoros" id="imagenPausePlay" src="" alt="">
                         </div>
-                        <div id="" class="">
+
+
+                        <div id="" class="" onclick="resetearTemporizador()">
                             <img class="pomodoros" src="assets/img/reset.png" />
                         </div>
-                        <div id="" class="">
+
+                        <div id="" class="" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
                             <img class="pomodoros" src="assets/img/settings.png" />
                         </div>
 
+                    </div>
+
+
+
+                </div>
+                <div class="row">
+                    <div class="panelInfo mb-2 col-md-12 d-flex justify-content-center align-items-center">
+                        <a class="texto-pantalla" id="info-pantalla"></a>
+
 
                     </div>
+
+
+
+
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="temporizador">
+                <div class="collapse" id="collapseExample">
+                    <div class="container mt-4 ">
+                        <div class="row ">
+                            <!-- <div class="" style="display:none"> -->
+                            <form class="d-flex flex-row justify-content-evenly ">
+                                <div class="">
+                                    <label for="pomodoros" class="form-label me-2  estilos_fonts">Pomodoros:</label>
+                                    <input type="number" class="form-control" id="pomodoros" value="3">
+                                </div>
+                                <div class="">
+                                    <label for="duracion-pomodoro" class="form-label me-2 estilos_fonts">Duración
+                                        (min):</label>
+                                    <input type="number" class="form-control" id="duracion-pomodoro" value="20">
+                                </div>
+                                <div class="">
+                                    <label for="duracion-descanso" class="form-label me-2  estilos_fonts">Break
+                                        (min):</label>
+                                    <input type="number" class="form-control" id="duracion-descanso" value="5">
+                                </div>
+    
+                                <div class="d-flex align-content-between">
+    
+                                    <button type="button" class="btn btn-primary m-2"
+                                        onclick="configurarTemporizador()">Ajustar</button>
+    
+    
+                                    <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal"
+                                        data-bs-target="#ayudaModal">
+                                        Ayuda
+                                    </button>
+    
+                                </div>
+    
+                            </form>
+    
+                            <!-- Modal -->
+                            <div class="modal fade" id="ayudaModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Guia de Ayuda Pomodoro</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ...
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+    
+    
+                        </div>
+                    </div>
+    
+    
+                </div>
+           </div>
+        </div>
+    
 
         <div class="container mt-5"></div>
 
@@ -62,7 +148,7 @@
                 <div class="col-md-3 mb-3">
                     <div class="card">
                         <div class="card-header" id="ToDo">
-                            <h5>TO DO</h5>
+                            <h2>TO DO</h2>
                         </div>
                         <div class="card-body" id="DropDoing" ondrop="drop(event)" ondragover="allowDrop(event)">
                             <div id="panelToDo">
@@ -81,7 +167,7 @@
                 <div class="col-md-3 mb-3">
                     <div class="card">
                         <div class="card-header">
-                            <h5>DOING</h5>
+                            <h2>DOING</h2>
                         </div>
                         <div class="card-body" id="DropDoing" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                         
@@ -95,7 +181,7 @@
                 <div class="col-md-3 mb-3">
                     <div class="card">
                         <div class="card-header">
-                            <h5>DONE</h5>
+                            <h2>DONE</h2>
                         </div>
                         <div class="card-body" id="DropDone" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
                         <div class="card-footer text-muted"></div>
@@ -105,7 +191,7 @@
                 <div class="col-md-3 mb-3">
                     <div class="card">
                         <div class="card-header">
-                            <h5>CALENDAR</h5>
+                            <h2>CALENDAR</h2>
                         </div>
                         <div class="card-body">
                             <div>
@@ -120,6 +206,7 @@
 
         <div class="container">
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+               
                 <div class="col-md-4 d-flex align-items-center">
                     <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
                         <svg class="bi" width="30" height="24">
@@ -127,6 +214,10 @@
                         </svg>
                     </a>
                     <span class="mb-3 mb-md-0 text-body-secondary d-flex justify-content-center">© 2024 KANPOM</span>
+                </div>
+
+                <div class="panelInfo1">
+
                 </div>
 
                 <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
@@ -196,6 +287,7 @@
         </div>
     </div>
 
+  
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
