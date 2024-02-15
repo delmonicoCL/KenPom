@@ -1,6 +1,6 @@
 .panelPomodoro {
   background: #7AF5E7;
-  border-radius: 15px;
+  border-radius: 5px;
   height: 170px;
   
 }
@@ -24,7 +24,7 @@ background: #FFD871;
 .panelInfo1{
 
   background: #7AF5E7;
-  border-radius: 15px;
+  border-radius: 5px;
   height: 85px;
 }
 
@@ -100,7 +100,7 @@ background: #F57A88;
 
 .texto-pantalla {
   font-family: 'SF Buttacup Lettering Shaded', sans-serif;
-  font-size: 55px;
+  font-size: 65px;
   color: #F57A88;
 
 }
