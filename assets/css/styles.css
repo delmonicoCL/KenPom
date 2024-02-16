@@ -58,6 +58,12 @@ background: coral
 
 }
 
+.tomatinCaminando{
+  width: auto;
+  height: 80px;
+
+}
+
 .urgente{
 
   color: #F57A88;
@@ -100,7 +106,7 @@ background: #F57A88;
 
 .texto-pantalla {
   font-family: 'SF Buttacup Lettering Shaded', sans-serif;
-  font-size: 65px;
+  font-size: 50px;
   color: #F57A88;
 
 }
@@ -117,3 +123,15 @@ H2{
   
 } 
 
+.barra-progreso {
+  width: 100%;
+  height: 100%;
+  
+  position: relative;
+}
+
+.barra-progreso img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

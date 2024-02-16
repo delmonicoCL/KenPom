@@ -7,7 +7,70 @@ let duracionDescanso = 10; // 5 minutos en segundos
 
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("imagenPausePlay").src = "/assets/img/play.png";
+  document.getElementById("tiempo-restante").textContent  = "KANPOM";
+
+ 
 });
+// document.addEventListener("DOMContentLoaded", accionPomodoro);
+
+function accionPomodoro() {
+  const barraProgreso = document.querySelector(".barra-progreso");
+  while (barraProgreso.firstChild) {
+    barraProgreso.removeChild(barraProgreso.firstChild);
+  }
+
+  const gif = document.createElement("img");
+  gif.src = "/assets/img/tomatin.gif"; // Ruta del GIF
+  gif.alt = "GIF";
+  gif.classList ="tomatinCaminando"
+  barraProgreso.appendChild(gif);
+
+  const pomodoroTerminado = document.getElementById("pomodoro-terminado");
+  duracionEnSegundos=duracionPomodoro;
+  // const duracionEnSegundos = 30; // Duración en segundos
+  const anchoGif = gif.clientWidth;
+  const anchoBarraProgreso = barraProgreso.clientWidth;
+  const pixelesAMover = anchoBarraProgreso - anchoGif;
+  
+  gif.style.transition = `left ${duracionEnSegundos}s linear`;
+  gif.style.left = `${pixelesAMover}px`;
+
+  setTimeout(() => {
+    pomodoroTerminado.style.display = "block";
+   
+  }, duracionEnSegundos * 1000);
+}
+
+function descansoPomodoro() {
+  const barraProgreso = document.querySelector(".barra-progreso");
+  while (barraProgreso.firstChild) {
+    barraProgreso.removeChild(barraProgreso.firstChild);
+  }
+
+  const gif = document.createElement("img");
+  gif.src = "/assets/img/tomatin1.gif"; // Ruta del GIF
+  gif.alt = "GIF";
+  gif.classList ="tomatinCaminando"
+  barraProgreso.appendChild(gif);
+
+  const pomodoroTerminado = document.getElementById("pomodoro-terminado");
+  duracionEnSegundos=duracionPomodoro;
+  // const duracionEnSegundos = 30; // Duración en segundos
+  const anchoGif = gif.clientWidth;
+  const anchoBarraProgreso = barraProgreso.clientWidth;
+  const pixelesAMover = anchoBarraProgreso - anchoGif;
+  
+  gif.style.transition = `left ${duracionEnSegundos}s linear`;
+  gif.style.left = `${pixelesAMover}px`;
+
+  setTimeout(() => {
+    pomodoroTerminado.style.display = "block";
+   
+  }, duracionEnSegundos * 1000);
+}
+
+
+
 
 function configurarTemporizador() {
   pomodorosRestantes = parseInt(document.getElementById("pomodoros").value);
@@ -18,6 +81,7 @@ function configurarTemporizador() {
     parseInt(document.getElementById("duracion-descanso").value) * 60;
   tiempoRestante = duracionPomodoro;
   actualizarVisualizacionTemporizador();
+  
   // document.getElementById("etiqueta-temporizador").innerText = "Pomodoro";
   // document.getElementById("temporizador-container").style.display = "block";
   cargarPomodoros();
@@ -37,12 +101,14 @@ function cargarPomodoros() {
 function iniciarDetener() {
   if (corriendo) {
     clearInterval(temporizador);
-    corriendo = false;
+        corriendo = false;
     document.getElementById("imagenPausePlay").src = "/assets/img/play.png";
   } else {
+    
     temporizador = setInterval(decrementarTemporizador, 1000);
     corriendo = true;
     document.getElementById("imagenPausePlay").src = "/assets/img/pause.png";
+ 
   }
 }
 
@@ -58,25 +124,35 @@ function decrementarTemporizador() {
  
     if (pomodorosRestantes > 0) {
       if (
+        
         document.getElementById("info-pantalla").textContent  ==="Pomodoro"
+        
       ) {
         document.getElementById("info-pantalla").textContent  = "Descanso";
         tiempoRestante = duracionDescanso;
         // breakMP3.play();
+        descansoPomodoro();
       } else {
         document.getElementById("info-pantalla").textContent  =
           "Pomodoro";
         tiempoRestante = duracionPomodoro;
         pomodorosRestantes--;
         cargarPomodoros();
+        accionPomodoro();
       }
       temporizador = setInterval(decrementarTemporizador, 1000);
     } else {
+      
         document.getElementById("info-pantalla").textContent  = "Has terminado";
         document.getElementById("imagenPausePlay").src = "/assets/img/play.png";
         // Cargar una imagen en el div con id "info_texto"
       document.getElementById("cantidadPomodoros").innerHTML =
         '<img src="/assets/img/tomatin.gif" alt="Imagen de terminado" class="tomatin">';
+        // const elemento = document.getElementById("barra-progreso");
+        // elemento.innerHTML = ""; // Esto eliminará todo el contenido dentro del div con el ID "barra-progreso"  
+        recargarPagina();
+
+        
 
 
       // termino_pomodoroMP3.play();
@@ -94,7 +170,7 @@ function actualizarVisualizacionTemporizador() {
 
 function resetearTemporizador() {
   clearInterval(temporizador);
-  pomodorosRestantes = 5;
+  pomodorosRestantes = 3;
   tiempoRestante = duracionPomodoro;
   corriendo = false;
   document.getElementById("etiqueta-temporizador").innerText = "Pomodoro";
@@ -104,6 +180,18 @@ function resetearTemporizador() {
 document.addEventListener("DOMContentLoaded", function () {
   cargarPomodoros();
 });
+
+
+
+function recargarPagina() {
+  // Tu código aquí
+
+  // Al finalizar la función, espera 5 segundos y luego recarga la página
+  setTimeout(function() {
+    window.location.reload();
+  }, 5000); // 5000 milisegundos son equivalentes a 5 segundos
+}
+
 
 // const termino_pomodoroMP3 = new Audio("assets/media/termino_pomodoro.mp3");
 // const breakMP3 = new Audio("assets/media/break.mp3");
