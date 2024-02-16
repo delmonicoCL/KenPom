@@ -2,8 +2,8 @@ let temporizador;
 let tiempoRestante;
 let corriendo = false;
 let pomodorosRestantes = 3;
-let duracionPomodoro = 10; // 20 minutos en segundos
-let duracionDescanso = 10; // 5 minutos en segundos
+let duracionPomodoro = 200; // 20 minutos en segundos
+let duracionDescanso = 100; // 5 minutos en segundos
 
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("imagenPausePlay").src = "/assets/img/play.png";
