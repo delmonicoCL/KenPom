@@ -5,8 +5,39 @@ let pomodorosRestantes = 3;
 let duracionPomodoro = 10; // 20 minutos en segundos
 let duracionDescanso = 10; // 5 minutos en segundos
 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const barraProgreso = document.querySelector(".barra-progreso");
+  const gif = document.querySelector(".barra-progreso img");
+  const duracionEnSegundos = 10; // Duración en segundos
+
+  const anchoBarraProgreso = barraProgreso.clientWidth;
+  const anchoGif = gif.clientWidth;
+  const pixelesAMover = anchoBarraProgreso - anchoGif;
+
+  const intervaloDuracion = (duracionEnSegundos * 1000) / pixelesAMover;
+  let posicionActual = 0;
+
+  const moverGif = setInterval(() => {
+    if (posicionActual < pixelesAMover) {
+      posicionActual++;
+      gif.style.left = posicionActual + "px";
+    } else {
+      clearInterval(moverGif);
+    }
+  }, intervaloDuracion);
+});
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("imagenPausePlay").src = "/assets/img/play.png";
+  
+document.getElementById("tiempo-restante").textContent = "KANPOM";
+
 });
 
 function configurarTemporizador() {

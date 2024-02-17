@@ -1,119 +1,131 @@
 .panelPomodoro {
-  background: #7AF5E7;
-  border-radius: 5px;
-  height: 170px;
-  
-}
-
-.panelPomodoro1 {
-  background: #FECCC5;
+  background: #7af5e7;
   border-radius: 15px;
   height: 170px;
-  
+  /* border: 1px solid black; */
+    /* Borde sólido de 1px de grosor */
+   
 }
 
+.card{
+border-radius: 10px;
 
+}
 
-.panelInfo{
-background: #FFD871;
+.panelInfo {
+   background: #ffd871;
   border-radius: 15px;
   height: 85px;
-
-}
-
-.panelInfo1{
-
-  background: #7AF5E7;
-  border-radius: 5px;
-  height: 85px;
+  border: 1px solid #ffd871; 
 }
 
 
-#ToDO {
-
-background: coral
-
-}
 .pomodoros {
+  width: 75px;
+  
+      filter: hue-rotate(120deg);
+      /* Cambia el color a verde */
+}
 
+.botonesPomodoro {
   width: 75px;
 
+  filter: hue-rotate(120deg);
+  /* Cambia el color a verde */
+}
+.calendar {
+  width: -webkit-fill-available;
 }
 
-.drop-zone {
-  background: chocolate;
-  width: 200px;
-  height: 432px;
-
-}
-
-.calendar{
-    width: -webkit-fill-available;
-
-}
-
-.tomatin{
+.tomatin {
   width: auto;
   height: 160px;
-
 }
 
-.urgente{
-
-  color: #F57A88;
-  
-
+.urgente {
+  color: #f57a88;
 }
 
-.crearTarea{
-
-  background: #7AC5F5;
+.crearTarea {
+  background: #ffd871;
+  border-radius: 40px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
 }
 
-.bottonBorrar{
-background: #F57A88;
-
-
+.bottonBorrar {
+  background: #f57a88;
+  border-radius: 40px;
+  color: rgb(255, 255, 255);;
+  font-weight: bold;
 }
 
+.bottonAyuda {
+  background: #ffd871;
+  border-radius: 40px;
+  color: rgb(255, 255, 255);;
+  font-weight: bold;
+}
 
-
-
-.timer {
-  text-align: center;
+.ventanaTarea {
+  background: #ffd9713a;
 }
 
 #tiempo-restante {
-  font-family: 'SF Buttacup Lettering Shaded', sans-serif;
+  font-family: "SF Buttacup Lettering Shaded", sans-serif;
   font-size: 115px;
-  color: azure;
-
-}
-
-.info-pantalla{
-  font-family: 'SF Buttacup Lettering Shaded', sans-serif;
-                                                
-    font-size: 90px;
-    color: azure;
-
+  color: rgb(255, 255, 255);;
 }
 
 .texto-pantalla {
-  font-family: 'SF Buttacup Lettering Shaded', sans-serif;
-  font-size: 65px;
-  color: #F57A88;
+  font-family: "SF Buttacup Lettering Shaded", sans-serif;
+  font-size: 55px;
+  color:#052623
+}
+
+.estilos_fonts{
+font-size: 15px;
 
 }
 
-button {
-  margin-top: 10px;
-  font-size: 16px;
+H2 {
+  font-family: "SF Buttacup Lettering Shaded", sans-serif;
+}
+
+.panelDONE {
+  background: #f2c1bd;
+}
+
+.panelDOING {
+  background: #cad9a9;
+}
+
+.panelDO {
+  background: #d0efe9;
 }
 
 
-H2{
-  font-family: 'SF Buttacup Lettering Shaded', sans-serif;
-   
-  
-} 
+.body{
+background: #ffffff;
+}
 
+.contenedor {
+  width: 100%;
+  margin: 50px auto;
+  border: 1px solid #ccc;
+  height: 100px;
+  overflow: hidden;
+}
+
+.barra-progreso {
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+.barra-progreso img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

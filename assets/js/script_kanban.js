@@ -13,7 +13,7 @@ function agregarTarea() {
   // Crear elemento de tarea
   var tareaCreada = document.createElement("div");
   tareaCreada.id = tareaID; // Asignar el ID a la tarea
-  tareaCreada.classList.add("alert", "alert-info"); //Color nueva tarea
+  tareaCreada.classList.add("alert", "ventanaTarea"); //Color nueva tarea
   tareaCreada.draggable = true; // Hacer el elemento arrastrable
   // tareaCreada.id = "task-" + Date.now(); // Asigna un ID
 
@@ -55,11 +55,11 @@ function agregarTarea() {
     fechaLimiteTarea
   );
 
-  // // Cerrar modal
-  // $("#crearTareaModal").modal("hide");
+  //Cerrar modal
+  $("#crearTareaModal").modal("hide");
 
-  // // Limpiar formulario
-  // document.getElementById("formularioTarea").reset();
+   // Limpiar formulario
+   document.getElementById("formularioTarea").reset();
 
   // Agregar evento al botón de borrar
   var botonBorrar = tareaCreada.querySelector(".btn-borrar");
@@ -127,20 +127,20 @@ function cargarTareasDesdeLocalStorage() {
   tareas.forEach(function(tarea) {
     var tareaElemento = document.createElement("div");
     tareaElemento.id = tarea.id;
-    tareaElemento.classList.add("alert", "alert-info");
+    tareaElemento.classList.add("alert", "ventanaTarea");
     tareaElemento.draggable = true;
 
     // Agregar ícono dependiendo de la importancia de la tarea
      var importanciaIcono = "";
      if (tarea.importancia === "Normal") {
        importanciaIcono =
-         "<i class='fas fa-star d-flex justify-content-end'></i>"; // Icono para importancia normal
+         "<i class='fas fa-star d-flex justify-content-end icono'></i>"; // Icono para importancia normal
      } else if (tarea.importancia === "Urgente") {
        importanciaIcono =
-         "<i class='d-flex justify-content-end fa-solid fa-bomb urgente'></i>"; // Icono para importancia urgente
+         "<i class='d-flex justify-content-end fa-solid fa-bomb urgente icono'></i>"; // Icono para importancia urgente
      } else if (tarea.importancia === "Baja") {
        importanciaIcono =
-         "<i class='d-flex justify-content-end fa-solid fa-face-smile-beam'></i>"; // Icono para importancia urgente
+         "<i class='d-flex justify-content-end fa-solid fa-face-smile-beam icono'></i>"; // Icono para importancia urgente
      }
 
     tareaElemento.innerHTML = `
