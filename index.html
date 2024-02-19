@@ -36,58 +36,66 @@
   <body>
     <div class="container" id="contenedorCentral">
       <div class="panelpomodoro mt-5">
-        <div class="container">
-          <div class="row">
-            <div
-              class="panelPomodoro mb-2 col-md-4 d-flex justify-content-center align-items-center"
-            >
-              <div id="cantidadPomodoros" class="pomodoros-container"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="panelPomodoro mb-2 col-md-4 d-flex justify-content-center align-items-center">
+
+                        <div id="cantidadPomodoros" class="pomodoros-container"></div>
+
+                    </div>
+
+                    <div class="panelPomodoro mb-2 col-md-5 d-flex justify-content-center align-items-center">
+
+                        <a id="tiempo-restante"></a>
+
+                    </div>
+
+
+                    <div class="panelPomodoro mb-2 col-md-3 d-flex justify-content-center align-items-center">
+
+                        <div id="zonaPausePlay" class="boton" onclick="iniciarDetener()">
+                            <img class="pomodoros" id="imagenPausePlay" src="" alt="">
+                        </div>
+
+
+                        <div id="" class="" onclick="resetearTemporizador()">
+                            <img class="pomodoros" src="assets/img/reset.png" />
+                        </div>
+
+                        <div id="" class="" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            <img class="pomodoros" src="assets/img/settings.png" />
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+                <div class="row">
+                    <div class="panelInfo mb-2 col-md-8 d-flex justify-content-center align-items-center">
+                        
+                         <div class="barra-progreso mb-2 col-md-12 d-flex justify-content-center align-items-center">
+                         
+                          <h2 id="pomodoro-terminado" style="display: none;">Pomodoro Terminado</h2>
+                          <h2 id="descanso-terminado" style="display: none;">Descanso Terminado</h2>
+
+
+                        </div>
+                      
+
+
+                   </div> 
+
+                    <div class="panelInfo mb-2 col-md-4 d-flex justify-content-center align-items-center">
+                        <p class="texto-pantalla" id="info-pantalla"></p>
+                    </div>
+                </div>
+               
             </div>
-
-            <div
-              class="panelPomodoro mb-2 col-md-5 d-flex justify-content-center align-items-center"
-            >
-              <a id="tiempo-restante"></a>
-            </div>
-
-            <div
-              class="panelPomodoro mb-2 col-md-3 d-flex justify-content-center align-items-center"
-            >
-              <div class="botonesPomodoro" id="zonaPausePlay" class="boton" onclick="iniciarDetener()">
-                <img class="botonesPomodoro" id="imagenPausePlay" src="" alt="" />
-              </div>
-
-              <div id="" class="" onclick="resetearTemporizador()">
-                <img class="botonesPomodoro" src="assets/img/reset.png" />
-              </div>
-
-              <div
-                id=""
-                class=""
-                data-bs-toggle="collapse"
-                href="#collapseExample"
-                role="button"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-              >
-                <img class="botonesPomodoro" src="assets/img/settings.png" />
-              </div>
-            </div>
-          </div>
-          
-            <div class="row">
-            <div
-              class="panelInfo mb-2 col-md-12 d-flex justify-content-center align-items-center"
-            >
-              <p class="texto-pantalla" id="info-pantalla"></p>
-            </div>
-          </div>
-
-          
-
-
         </div>
-      </div>
+
+
       <div class="container">
         <div class="temporizador">
           <div class="collapse" id="collapseExample">
