@@ -117,7 +117,43 @@ function drop(event) {
 
   // Mueve la tarea arrastrado a una nueva area
   event.target.appendChild(tareaArrastrada);
+
+  //  // Determinar en qué área se soltó la tarea
+  // var nuevoPanel;
+  // if (event.target.id === "panelDoing") {
+  //   nuevoPanel = "Doing";
+  // } else if (event.target.id === "panelDone") {
+  //   nuevoPanel = "Done";
+  // } else {
+  //   nuevoPanel = "ToDo";
+  // }
+
+  // Actualiza el valor del panelKanban
+  var tareaID = tareaArrastrada.id;
+  actualizarPanelKanban(tareaID, nuevoPanel);
+  console.log(nuevoPanel);
 }
+
+// Función para actualizar el valor del panelKanban tanto en el DOM como en el almacenamiento local
+function actualizarPanelKanban(tareaID, nuevoPanel) {
+  var tareaElemento = document.getElementById(tareaID);
+  // Actualiza el valor en el DOM
+  tareaElemento.dataset.panelKanban = nuevoPanel;
+
+  // Actualiza el valor en el almacenamiento local
+  var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+  tareas.forEach(function(tarea) {
+    if (tarea.id === tareaID) {
+      tarea.panel = nuevoPanel;
+    }
+  });
+  localStorage.setItem("tareas", JSON.stringify(tareas));
+}
+
+
+
+
+
 
 // Función para cargar las tareas desde localStorage y mostrarlas en el DOM
 function cargarTareasDesdeLocalStorage() {
