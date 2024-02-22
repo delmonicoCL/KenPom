@@ -1,3 +1,86 @@
+// Llama a la función para cargar las tareas desde localStorage y mostrarlas en el DOM
+cargarTareasDesdeLocalStorage();
+
+
+// Función para cargar las tareas desde localStorage y mostrarlas en el DOM
+// Función para cargar las tareas desde localStorage y mostrarlas en el DOM
+function cargarTareasDesdeLocalStorage() {
+  var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+
+  tareas.forEach(function(tarea) {
+    var contenedorId = "";
+
+    // Determina el ID del contenedor correspondiente según el valor de panel
+    if (tarea.panel === "ToDo") {
+      contenedorId = "DropToDo";
+    } else if (tarea.panel === "Doing") {
+      contenedorId = "DropDoing";
+    } else if (tarea.panel === "Done") {
+      contenedorId = "DropDone";
+    }
+
+    // Obtener el contenedor correspondiente
+    var contenedor = document.getElementById(contenedorId);
+
+    // Crear y agregar el elemento de tarea al contenedor correspondiente
+    var tareaElemento = document.createElement("div");
+    tareaElemento.id = tarea.id;
+    tareaElemento.classList.add("alert", "ventanaTarea");
+    tareaElemento.draggable = true;
+
+    // Agregar ícono dependiendo de la importancia de la tarea
+    var importanciaIcono = "";
+    if (tarea.importancia === "Normal") {
+      importanciaIcono =
+        "<i class='fas fa-star d-flex justify-content-end icono'></i>"; // Icono para importancia normal
+    } else if (tarea.importancia === "Urgente") {
+      importanciaIcono =
+        "<i class='d-flex justify-content-end fa-solid fa-bomb urgente icono'></i>"; // Icono para importancia urgente
+    } else if (tarea.importancia === "Baja") {
+      importanciaIcono =
+        "<i class='d-flex justify-content-end fa-solid fa-face-smile-beam icono'></i>"; // Icono para importancia urgente
+    }
+
+    tareaElemento.innerHTML = `
+      <strong>${importanciaIcono}</strong>
+      <strong>${tarea.nombre}</strong><br>
+      <button class=" mt-3 btn bottonAyuda btn-sm btn-abrir">Abrir</button>
+      <button class="mt-3 btn bottonBorrar btn-sm btn-borrar">Borrar</button>
+    `;
+
+    // Agregar evento al botón de abrir
+    var botonAbrir = tareaElemento.querySelector(".btn-abrir");
+    botonAbrir.addEventListener("click", function() {
+      // Lógica para abrir el modal y mostrar la información de la tarea
+      
+      $("#myModal").modal("show");
+      
+      document.getElementById("nombreTareaModal").innerText = tarea.nombre;
+      document.getElementById("descripcionTareaModal").innerText = tarea.descripcion;
+      document.getElementById("importanciaTareaModal").innerText = tarea.importancia;
+      document.getElementById("fechaLimiteTareaModal").innerText = tarea.fecha;
+      
+     
+    });
+
+    // Agregar evento al botón de borrar
+    var botonBorrar = tareaElemento.querySelector(".btn-borrar");
+    botonBorrar.addEventListener("click", function() {
+      if (confirm("¿Deseas eliminar esta tarea?")) {
+        tareaElemento.remove();
+        eliminarTareaDeLocalStorage(tarea.id);
+      }
+    });
+
+    // Agregar eventos de arrastre
+    tareaElemento.addEventListener("dragstart", dragStart);
+    tareaElemento.addEventListener("dragover", allowDrop);
+    tareaElemento.addEventListener("drop", drop);
+
+    contenedor.appendChild(tareaElemento); // Agregar la tarea al contenedor correspondiente
+  });
+}
+
 
 // Función para agregar una nueva tarea
 function agregarTarea() {
@@ -33,11 +116,27 @@ function agregarTarea() {
   tareaCreada.innerHTML = ` 
     <strong>${importanciaIcono}</strong>
     <strong>${nombreTarea}</strong><br>
-    <strong>Descripción:</strong> ${descripcionTarea}<br>
-    <strong>Importancia:</strong> ${importanciaTarea}<br>
-    <strong>Fecha Limite:</strong> ${fechaLimiteTarea}<br>
+    <strong>${descripcionTarea}</strong><br>
+    
+   
+    <button class=" mt-3 btn bottonAyuda btn-sm btn-abrir">Abrir</button>
     <button class=" mt-3 btn bottonBorrar btn-sm btn-borrar">Borrar</button>
   `;
+
+
+  // Agregar evento al botón de abrir
+var botonAbrir = tareaCreada.querySelector(".btn-abrir");
+botonAbrir.addEventListener("click", function () {
+   
+    $("#myModal").modal("show");
+   
+    // Puedes llenarlos con la información de la tarea así:
+    document.getElementById("nombreTareaModal").innerText = nombreTarea;
+    document.getElementById("descripcionTareaModal").innerText = descripcionTarea;
+    document.getElementById("importanciaTareaModal").innerText = importanciaTarea;
+    document.getElementById("fechaLimiteTareaModal").innerText = fechaLimiteTarea;
+
+});
 
   // Agrega eventos de arrastre a las tareas creadas
   tareaCreada.addEventListener("dragstart", dragStart);
@@ -117,21 +216,25 @@ function drop(event) {
 
   // Mueve la tarea arrastrado a una nueva area
   event.target.appendChild(tareaArrastrada);
+  
 
   //  // Determinar en qué área se soltó la tarea
-  // var nuevoPanel;
-  // if (event.target.id === "panelDoing") {
-  //   nuevoPanel = "Doing";
-  // } else if (event.target.id === "panelDone") {
-  //   nuevoPanel = "Done";
-  // } else {
-  //   nuevoPanel = "ToDo";
-  // }
+  var nuevoPanel;
+   if (event.target.id === "DropDoing") {
+     nuevoPanel = "Doing";
+     console.log("Doing");
+       } else if (event.target.id === "DropDone") {
+     nuevoPanel = "Done";
+     console.log("Done");
+   } else {
+     nuevoPanel = "ToDo";
+     console.log("ToDo");
+   }
 
   // Actualiza el valor del panelKanban
   var tareaID = tareaArrastrada.id;
   actualizarPanelKanban(tareaID, nuevoPanel);
-  console.log(nuevoPanel);
+  
 }
 
 // Función para actualizar el valor del panelKanban tanto en el DOM como en el almacenamiento local
@@ -150,58 +253,6 @@ function actualizarPanelKanban(tareaID, nuevoPanel) {
   localStorage.setItem("tareas", JSON.stringify(tareas));
 }
 
-
-
-
-
-
-// Función para cargar las tareas desde localStorage y mostrarlas en el DOM
-function cargarTareasDesdeLocalStorage() {
-  var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
-  var contenedorToDo = document.getElementById("panelToDo");
-
-  tareas.forEach(function(tarea) {
-    var tareaElemento = document.createElement("div");
-    tareaElemento.id = tarea.id;
-    tareaElemento.classList.add("alert", "ventanaTarea");
-    tareaElemento.draggable = true;
-
-    // Agregar ícono dependiendo de la importancia de la tarea
-     var importanciaIcono = "";
-     if (tarea.importancia === "Normal") {
-       importanciaIcono =
-         "<i class='fas fa-star d-flex justify-content-end icono'></i>"; // Icono para importancia normal
-     } else if (tarea.importancia === "Urgente") {
-       importanciaIcono =
-         "<i class='d-flex justify-content-end fa-solid fa-bomb urgente icono'></i>"; // Icono para importancia urgente
-     } else if (tarea.importancia === "Baja") {
-       importanciaIcono =
-         "<i class='d-flex justify-content-end fa-solid fa-face-smile-beam icono'></i>"; // Icono para importancia urgente
-     }
-
-    tareaElemento.innerHTML = `
-    <strong>${importanciaIcono}</strong>
-      <strong>${tarea.nombre}</strong><br>
-      <strong>Descripción:</strong> ${tarea.descripcion}<br>
-      <strong>Importancia:</strong> ${tarea.importancia}<br>
-      <strong>Fecha de término:</strong> ${tarea.fecha}<br>
-      <button class="mt-3 btn bottonBorrar btn-sm btn-borrar">Borrar</button>
-    `;
-
-    tareaElemento.addEventListener("dragstart", dragStart);
-    var botonBorrar = tareaElemento.querySelector(".btn-borrar");
-    botonBorrar.addEventListener("click", function () {
-      if (confirm("¿Deseas eliminar esta tarea?")) {
-        tareaElemento.remove();
-        eliminarTareaDeLocalStorage(tarea.id);
-      }
-    });
-    contenedorToDo.appendChild(tareaElemento);
-  });
-}
-
-// Llama a la función para cargar las tareas desde localStorage y mostrarlas en el DOM
-cargarTareasDesdeLocalStorage();
 
 // // Función para actualizar el campo panelKanban de una tarea en localStorage
 function actualizarPanelKanbanDeTarea(tareaId, nuevoPanel) {
@@ -222,8 +273,10 @@ return tarea.id === tareaId;
    }
  }
 
-// // Llamada a la función para actualizar el campo panelKanban de una tarea específica
- var tareaId = "ID_DE_LA_TAREA_A_ACTUALIZAR";
- var nuevoPanel = "Doing";
- actualizarPanelKanbanDeTarea(tareaId, nuevoPanel);
+// // // Llamada a la función para actualizar el campo panelKanban de una tarea específica
+//  var tareaId = "ID_DE_LA_TAREA_A_ACTUALIZAR";
+//  var nuevoPanel = "Doing";
+//  actualizarPanelKanbanDeTarea(tareaId, nuevoPanel);
+
+
 

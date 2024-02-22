@@ -28,14 +28,14 @@ border-radius: 10px;
 
 
 .pomodoros {
-  width: 100px;
+  width: 75px;
   
       filter: hue-rotate(120deg);
       /* Cambia el color a verde */
 }
 
 .botonesPomodoro {
-  width: 75px;
+  width: 55px;
 
   filter: hue-rotate(120deg);
   /* Cambia el color a verde */
@@ -87,13 +87,13 @@ border-radius: 10px;
 
 #tiempo-restante {
   font-family: "SF Buttacup Lettering Shaded", sans-serif;
-  font-size: 115px;
+  font-size: 80px;
   color: rgb(255, 255, 255);;
 }
 
 .texto-pantalla {
-  font-family: "SF Buttacup Lettering Shaded", sans-serif;
-  font-size: 55px;
+  /* font-family: "SF Buttacup Lettering Shaded", sans-serif; */
+  font-size: 35px;
   color:#052623
 }
 
@@ -110,7 +110,7 @@ font-size: 15px;
 
 }
 
-H2 {
+H2, H3 {
   font-family: "SF Buttacup Lettering Shaded", sans-serif;
 }
 
@@ -151,3 +151,4 @@ background: #ffffff;
   top: 0;
   left: 0;
 }
+
