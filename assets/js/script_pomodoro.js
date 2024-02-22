@@ -2,7 +2,7 @@ let temporizador;
 let tiempoRestante;
 let corriendo = false;
 let pomodorosRestantes = 3;
-let duracionPomodoro = 25; // 20 minutos en segundos
+let duracionPomodoro = 30; // 20 minutos en segundos
 let duracionDescanso = 5; // 5 minutos en segundos
 
 document.addEventListener("DOMContentLoaded", function () {
