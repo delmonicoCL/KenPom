@@ -44,8 +44,8 @@ function cargarTareasDesdeLocalStorage() {
     tareaElemento.innerHTML = `
       <strong>${importanciaIcono}</strong>
       <strong>${tarea.nombre}</strong><br>
-      <button class=" mt-3 btn bottonAyuda btn-sm btn-abrir">Abrir</button>
-      <button class="mt-3 btn bottonBorrar btn-sm btn-borrar">Borrar</button>
+      <button class=" mt-3 btn bottonAyuda btn-sm btn-abrir">abrir</button>
+      <button class="mt-3 btn bottonBorrar btn-sm btn-borrar">borrar</button>
     `;
 
     // Agregar evento al botón de abrir
@@ -75,7 +75,7 @@ function cargarTareasDesdeLocalStorage() {
     // Agregar eventos de arrastre
     tareaElemento.addEventListener("dragstart", dragStart);
     tareaElemento.addEventListener("dragover", allowDrop);
-    tareaElemento.addEventListener("drop", drop);
+    // tareaElemento.addEventListener("drop", drop);
 
     contenedor.appendChild(tareaElemento); // Agregar la tarea al contenedor correspondiente
   });
@@ -128,10 +128,13 @@ function agregarTarea() {
 var botonAbrir = tareaCreada.querySelector(".btn-abrir");
 botonAbrir.addEventListener("click", function () {
    
-    $("#myModal").modal("show");
+  $("#myModal").modal("show");
+  
+  console.log(importanciaIcono);
    
     // Puedes llenarlos con la información de la tarea así:
-    document.getElementById("nombreTareaModal").innerText = nombreTarea;
+  document.getElementById("importanciaIconoModal").innerHTML = importanciaIcono;
+  document.getElementById("nombreTareaModal").innerText = nombreTarea;
     document.getElementById("descripcionTareaModal").innerText = descripcionTarea;
     document.getElementById("importanciaTareaModal").innerText = importanciaTarea;
     document.getElementById("fechaLimiteTareaModal").innerText = fechaLimiteTarea;

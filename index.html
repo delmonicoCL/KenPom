@@ -61,10 +61,7 @@
         <div class="row">
           <div class="panelInfo mb-2 col-md-8 d-flex justify-content-center align-items-center">
 
-            <div class="barra-progreso mb-2 col-md-12 d-flex justify-content-center align-items-center">
-
-              <h2 id="pomodoro-terminado" style="display: none;">Pomodoro Terminado</h2>
-              <h2 id="descanso-terminado" style="display: none;">Descanso Terminado</h2>
+            <div id="barra-progreso" class="barra-progreso mb-2 col-md-12 d-flex justify-content-center align-items-center">
 
 
             </div>
@@ -95,7 +92,7 @@
                 </div>
                 <div class="">
                   <label for="duracion-pomodoro" class="form-label me-2 estilos_fonts">Duración Pomodoros (min):</label>
-                  <input type="number" class="form-control" id="duracion-pomodoro" value="20" />
+                  <input type="number" class="form-control" id="duracion-pomodoro" value="25" />
                 </div>
                 <div class="">
                   <label for="duracion-descanso" class="form-label me-2 estilos_fonts">Duracion Descanso (min):</label>
@@ -104,32 +101,40 @@
 
                 <div class="d-flex align-content-between">
                   <button type="button" class="btn bottonBorrar m-2" onclick="configurarTemporizador()">
-                    Ajustar
+                    ajustar
                   </button>
 
                   <button type="button" class="btn bottonAyuda m-2" data-bs-toggle="modal" data-bs-target="#ayudaModal">
-                    Ayuda
+                    ayuda
                   </button>
                 </div>
               </form>
 
-              <!-- Modal -->
+              <!-- Modal  Guia de Uso-->
               <div class="modal fade" id="ayudaModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h1 class="modal-title fs-5" id="exampleModalLabel">
                         Guia de Ayuda Pomodoro
                       </h1>
+                      <p>
+
+
+                        "El método Pomodoro, una técnica popular de gestión del tiempo, te permite concentrarte en tus tareas durante 25 minutos, seguidos de 5 minutos de descanso, lo que maximiza tu productividad. Esta estructura promueve flujos de trabajo más efectivos y focalizados. En la sección de ajustes, puedes personalizar la cantidad de ciclos y sus tiempos para adaptarlos a tu ritmo de trabajo único, potenciando aún más tu eficiencia y logrando mejores resultados."
+
+
+                      </p>
+
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">...</div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Close
+                      <button type="button" class="btn bottonBorrar" data-bs-dismiss="modal">
+                        cerrar
                       </button>
-                      <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                      
                     </div>
                   </div>
                 </div>
@@ -151,7 +156,7 @@
             </div>
             <div class="card-body" id="DropToDo" ondrop="drop(event)" ondragover="allowDrop(event)">
               <div id="panelToDo">
-                <!-- Aquí se cargaran las nuevas tareas nuevas -->
+                <!-- Aquí se cargaran las nuevas tareas nuevas x defecto -->
               </div>
             </div>
             <div class="card-footer panelDO d-flex justify-content-center">
@@ -278,7 +283,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn crearTarea" onclick="agregarTarea()">
-            Crear
+            crear
           </button>
         </div>
       </div>
@@ -301,6 +306,7 @@
             <div class="row justify-content-start">
                         
               <div class="col-10">
+              
                 <p><strong>Nombre:</strong> <span id="nombreTareaModal"></span></p>
                 <p><strong>Descripción:</strong> <span id="descripcionTareaModal"></span></p>
                 <p><strong>Importancia:</strong> <span id="importanciaTareaModal"></span></p>
@@ -308,7 +314,7 @@
               </div>
 
               <div class="col-2">
-                
+                  <p><strong>SDFASDF</strong> <span id="importanciaIconoModal"></span></p>
               </div>
              
             </div>

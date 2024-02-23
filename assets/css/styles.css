@@ -28,7 +28,7 @@ border-radius: 10px;
 
 
 .pomodoros {
-  width: 75px;
+  width: 90px;
   
       filter: hue-rotate(120deg);
       /* Cambia el color a verde */
@@ -36,8 +36,7 @@ border-radius: 10px;
 
 .botonesPomodoro {
   width: 55px;
-
-  filter: hue-rotate(120deg);
+fill: #d0efe9;
   /* Cambia el color a verde */
 }
 .calendar {
@@ -101,7 +100,7 @@ border-radius: 10px;
   font-family: 'SF Buttacup Lettering Shaded', sans-serif;
 
   font-size: 90px;
-  color: azure;
+  color: rgb(234, 248, 248);
 
 }
 
