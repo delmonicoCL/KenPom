@@ -14,6 +14,7 @@
   <link href="https://fonts.cdnfonts.com/css/sylar-stencil" rel="stylesheet" />
   <link href="https://fonts.cdnfonts.com/css/tiny-box" rel="stylesheet" />
   <link href="https://fonts.cdnfonts.com/css/sf-buttacup-lettering-shaded" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="/assets/img/tomatin_pomodoro.ico">
   <script src="/assets/js/script_kanban.js"></script>
   <script src="/assets/js/script_pomodoro.js"></script>
   <title>Kanban Panel</title>
@@ -88,15 +89,15 @@
               <form class="d-flex flex-row justify-content-between">
                 <div class="">
                   <label for="pomodoros" class="form-label me-2 estilos_fonts">Cantidad de Pomodoros:</label>
-                  <input type="number" class="form-control" id="pomodoros" value="3" />
+                  <input type="number" class="form-control" id="pomodoros" value="3"  min="1" max="12" step="1" />
                 </div>
                 <div class="">
                   <label for="duracion-pomodoro" class="form-label me-2 estilos_fonts">Duración Pomodoros (min):</label>
-                  <input type="number" class="form-control" id="duracion-pomodoro" value="25" />
+                  <input type="number" class="form-control" id="duracion-pomodoro" value="25" min="1" step="1" />
                 </div>
                 <div class="">
                   <label for="duracion-descanso" class="form-label me-2 estilos_fonts">Duracion Descanso (min):</label>
-                  <input type="number" class="form-control" id="duracion-descanso" value="5" />
+                  <input type="number" class="form-control" id="duracion-descanso" value="5" min="1" step="1" />
                 </div>
 
                 <div class="d-flex align-content-between">
@@ -116,20 +117,26 @@
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        Guia de Ayuda Pomodoro
-                      </h1>
-                      <p>
 
-
-                        "El método Pomodoro, una técnica popular de gestión del tiempo, te permite concentrarte en tus tareas durante 25 minutos, seguidos de 5 minutos de descanso, lo que maximiza tu productividad. Esta estructura promueve flujos de trabajo más efectivos y focalizados. En la sección de ajustes, puedes personalizar la cantidad de ciclos y sus tiempos para adaptarlos a tu ritmo de trabajo único, potenciando aún más tu eficiencia y logrando mejores resultados."
-
-
-                      </p>
+                      <h2 class="modal-title fs-4" id="exampleModalLabel">
+                        Método Pomodoro
+                      </h2>
+                     
 
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">...</div>
+                    <div class="modal-body">
+
+                      <p>
+                        Es una técnica popular de gestión del tiempo, te permite concentrarte en tus tareas,  <strong>sin distracciones</strong> durante 25 minutos, seguidos de 5 minutos de descanso. Este metodo promueve flujos de trabajo más efectivos, focalizados y productivos."
+                      </p>
+
+                      <p>
+                        En la sección de <strong>ajustes</strong>, puedes personalizar la cantidad de ciclos pomodoros, su duracion y los tiempos de descanso. Por defecto la APP viene con 3 pomodoros de 25 min y 5 min de descanso. Adaptalos a tu ritmo de trabajo :)
+                      </p>
+                    </div>
+
+                    
                     <div class="modal-footer">
                       <button type="button" class="btn bottonBorrar" data-bs-dismiss="modal">
                         cerrar
@@ -161,7 +168,7 @@
             </div>
             <div class="card-footer panelDO d-flex justify-content-center">
               <button type="button" class="btn crearTarea" data-bs-toggle="modal" data-bs-target="#tareaModal">
-                Crear Tarea
+                crear tarea
               </button>
             </div>
           </div>
@@ -250,9 +257,9 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="tareaModalLabel">Agregar TAREAS</h5>
+          <h3 class="modal-title" id="tareaModalLabel">Crear Tarea</h3>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          <span aria-hidden="true">&times;</span>
+         
         </div>
 
         <div class="modal-body">
@@ -296,7 +303,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header panelDO">
-          <h2 class="modal-title" id="exampleModalLabel">   Tarea</h2>
+          <h2 class="modal-title ms-3 " id="exampleModalLabel">   Tarea</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

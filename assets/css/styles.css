@@ -35,10 +35,17 @@ border-radius: 10px;
 }
 
 .botonesPomodoro {
-  width: 55px;
-fill: #d0efe9;
-  /* Cambia el color a verde */
+  width: 75px;
+
+ 
 }
+
+@media screen and (max-width: 350px) and (max-height: 800px) {
+  .botonesPomodoro {
+    width: 15px; /* Ancho cuando la pantalla sea más pequeña que 412x914 píxeles */
+  }
+}
+
 .calendar {
   width: -webkit-fill-available;
 }
@@ -91,9 +98,9 @@ fill: #d0efe9;
 }
 
 .texto-pantalla {
-  /* font-family: "SF Buttacup Lettering Shaded", sans-serif; */
-  font-size: 35px;
-  color:#052623
+  font-family: "SF Buttacup Lettering Shaded", sans-serif;
+  font-size: 40px;
+  color:#ffffff;
 }
 
 .info-pantalla {
