@@ -6,7 +6,7 @@ let duracionPomodoro = localStorage.getItem("duracionPomodoro") || 20; // Valor 
 let duracionDescanso = localStorage.getItem("duracionDescanso") || 10; // Valor predeterminado: 10 minutos
 
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("imagenPausePlay").src = "/assets/img/play.png";
+  document.getElementById("imagenPausePlay").src = "assets/img/play.png";
   document.getElementById("tiempo-restante").textContent = "KANPOM";
 });
 // document.addEventListener("DOMContentLoaded", accionPomodoro);
@@ -18,7 +18,7 @@ function accionPomodoro() {
   }
 
   const gif = document.createElement("img");
-  gif.src = "/assets/img/tomatin.gif"; // Ruta del GIF
+  gif.src = "assets/img/tomatin.gif"; // Ruta del GIF
   gif.alt = "GIF";
   gif.classList = "tomatinCaminando";
   barraProgreso.appendChild(gif);
@@ -59,7 +59,7 @@ function descansoPomodoro() {
   }
 
   const gif = document.createElement("img");
-  gif.src = "/assets/img/tomatin.gif"; // Ruta del GIF
+  gif.src = "assets/img/tomatin.gif"; // Ruta del GIF
   gif.alt = "GIF";
   gif.classList = "tomatinCaminando";
   barraProgreso.appendChild(gif);
@@ -110,12 +110,12 @@ function iniciarDetener() {
   if (corriendo) {
     clearInterval(temporizador);
     corriendo = false;
-    document.getElementById("imagenPausePlay").src = "/assets/img/play.png";
+    document.getElementById("imagenPausePlay").src = "assets/img/play.png";
     pausarGif(); // Detiene el gif al pausar el temporizador
   } else {
     temporizador = setInterval(decrementarTemporizador, 1000);
     corriendo = true;
-    document.getElementById("imagenPausePlay").src = "/assets/img/pause.png";
+    document.getElementById("imagenPausePlay").src = "assets/img/pause.png";
     reanudarGif(); // Reanuda el gif al reanudar el temporizador
   }
 }
@@ -143,10 +143,10 @@ function decrementarTemporizador() {
       temporizador = setInterval(decrementarTemporizador, 1000);
     } else {
       document.getElementById("info-pantalla").textContent = "Has terminado";
-      document.getElementById("imagenPausePlay").src = "/assets/img/play.png";
+      document.getElementById("imagenPausePlay").src = "assets/img/play.png";
       // Cargar una imagen en el div con id "info_texto"
       document.getElementById("cantidadPomodoros").innerHTML =
-        '<img src="/assets/img/tomatin.gif" alt="Imagen de terminado" class="tomatin">';
+        '<img src="assets/img/tomatin.gif" alt="Imagen de terminado" class="tomatin">';
 
       document.getElementById("barra-progreso").innerHTML = "";
 
@@ -159,7 +159,7 @@ function decrementarTemporizador() {
 
 function resetearTemporizador() {
   if (confirm("¿Deseas RESETEAR Temporizador?")) {
-    document.getElementById("imagenPausePlay").src = "/assets/img/play.png";
+    document.getElementById("imagenPausePlay").src = "assets/img/play.png";
     // actualizar Pagina
     window.location.reload();
   }
