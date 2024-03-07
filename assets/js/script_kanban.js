@@ -3,7 +3,6 @@ cargarTareasDesdeLocalStorage();
 
 
 // Función para cargar las tareas desde localStorage y mostrarlas en el DOM
-// Función para cargar las tareas desde localStorage y mostrarlas en el DOM
 function cargarTareasDesdeLocalStorage() {
   var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
 
@@ -26,7 +25,7 @@ function cargarTareasDesdeLocalStorage() {
     var tareaElemento = document.createElement("div");
     tareaElemento.id = tarea.id;
     tareaElemento.classList.add("alert", "ventanaTarea");
-    tareaElemento.draggable = true;
+    tareaElemento.draggable = tarea.draggable !== false; // Restaurar el estado de arrastre
 
     // Agregar ícono dependiendo de la importancia de la tarea
     var importanciaIcono = "";
@@ -78,6 +77,12 @@ function cargarTareasDesdeLocalStorage() {
     // tareaElemento.addEventListener("drop", drop);
 
     contenedor.appendChild(tareaElemento); // Agregar la tarea al contenedor correspondiente
+  
+  // Si la tarea está en el panel "Done" y su estado de arrastre es falso, deshabilitar la capacidad de arrastre
+  if (tarea.panel === "Done" && !tarea.draggable) {
+    tareaElemento.draggable = false;
+  }
+  
   });
 }
 
@@ -116,7 +121,7 @@ function agregarTarea() {
   tareaCreada.innerHTML = ` 
     <strong>${importanciaIcono}</strong>
     <strong>${nombreTarea}</strong><br>
-    <strong>${descripcionTarea}</strong><br>
+ 
     
    
     <button class=" mt-3 btn bottonAyuda btn-sm btn-abrir">Abrir</button>
@@ -229,6 +234,7 @@ function drop(event) {
        } else if (event.target.id === "DropDone") {
      nuevoPanel = "Done";
      console.log("Done");
+     tareaArrastrada.draggable = false;
    } else {
      nuevoPanel = "ToDo";
      console.log("ToDo");
@@ -258,23 +264,24 @@ function actualizarPanelKanban(tareaID, nuevoPanel) {
 
 
 // // Función para actualizar el campo panelKanban de una tarea en localStorage
-function actualizarPanelKanbanDeTarea(tareaId, nuevoPanel) {
-//   // Obtener el array de tareas desde localStorage
-var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+function actualizarPanelKanbanDeTarea(tareaId, nuevoPanel, draggable) {
+  // Obtener el array de tareas desde localStorage
+  var tareas = JSON.parse(localStorage.getItem("tareas")) || [];
 
-//   // Encuentra el elemento en el array que deseas actualizar
-var tareaAActualizar = tareas.find(function(tarea) {
-return tarea.id === tareaId;
-   });
+  // Encuentra el elemento en el array que deseas actualizar
+  var tareaAActualizar = tareas.find(function(tarea) {
+    return tarea.id === tareaId;
+  });
 
-//   // Verifica si se encontró la tarea y actualiza el valor de panelKanban si es necesario
-   if (tareaAActualizar) {
-     tareaAActualizar.panelKanban = nuevoPanel;
+  // Verifica si se encontró la tarea y actualiza el valor de panelKanban y la capacidad de arrastre si es necesario
+  if (tareaAActualizar) {
+    tareaAActualizar.panel = nuevoPanel;
+    tareaAActualizar.draggable = draggable;
 
-     // Guarda el array actualizado de nuevo en localStorage
-     localStorage.setItem("tareas", JSON.stringify(tareas));
-   }
- }
+    // Guarda el array actualizado de nuevo en localStorage
+    localStorage.setItem("tareas", JSON.stringify(tareas));
+  }
+}
 
 // // // Llamada a la función para actualizar el campo panelKanban de una tarea específica
 //  var tareaId = "ID_DE_LA_TAREA_A_ACTUALIZAR";

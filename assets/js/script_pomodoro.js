@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("imagenPausePlay").src = "assets/img/play.png";
   document.getElementById("tiempo-restante").textContent = "KANPOM";
 });
-// document.addEventListener("DOMContentLoaded", accionPomodoro);
+
 
 function accionPomodoro() {
   const barraProgreso = document.querySelector(".barra-progreso");
